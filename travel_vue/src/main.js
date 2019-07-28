@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+// 引入vue-awesome-swiper轮播图依赖包
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import router from './router'
 // 移入移动端解决300ms触屏延时问题的依赖包文件
 import fastClick from 'fastclick'
@@ -11,10 +13,14 @@ import '^@/reset.css'
 import '^@/border.css'
 // 引入iconfont字体样式文件
 import '^@/iconfont.css'
+// 引入vue-awesome-swiper轮播图样式文件
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 // 在document.body中绑定fastClick
 fastClick.attach(document.body)
+// 在vue中使用轮播图
+Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
