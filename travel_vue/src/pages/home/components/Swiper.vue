@@ -1,4 +1,5 @@
 <template>
+  <!-- 首页轮播 -->
   <!--wrapper高度相对于宽度的百分比，用于解决网速较慢时轮播的抖动问题-->
   <div class="wrapper">
     <swiper :options="swiperOption">
