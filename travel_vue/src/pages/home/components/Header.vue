@@ -28,10 +28,9 @@ export default {
 @import '~^@/varibles.styl'
 .header
   display: flex
-  line-height: .88rem
+  line-height: $headerHeight
   background: $bgColor
   color: #fff
-  padding-top: .2rem
   .header-left
     width: .64rem
     float: left
