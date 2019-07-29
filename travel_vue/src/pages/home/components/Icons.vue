@@ -16,46 +16,14 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    itemList: Array
+  },
   data () {
     return {
-      swiperOption: {},
-      itemList: [{
-        id: '01',
-        desc: '热门景点/黄山日出/泰山日落',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'
-      }, {
-        id: '02',
-        desc: '水上乐园',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png'
-      }, {
-        id: '03',
-        desc: '欢乐游玩',
-        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/67370daeaa1a8ac24a6c7930f74fee0c.png'
-      }, {
-        id: '04',
-        desc: '海洋公园',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png'
-      }, {
-        id: '05',
-        desc: '亲情娱乐',
-        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/b71c1387a921ccf9c6edc7e8def3da90.png'
-      }, {
-        id: '06',
-        desc: '海上冲浪',
-        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/3a0879f224e0aca97843bff78cabac3a.png'
-      }, {
-        id: '07',
-        desc: '夏日城堡',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png'
-      }, {
-        id: '08',
-        desc: '美丽山水',
-        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/f04285731d7121da1b9028e2bf431695.png'
-      }, {
-        id: '09',
-        desc: '快乐出行',
-        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/f04285731d7121da1b9028e2bf431695.png'
-      }]
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {

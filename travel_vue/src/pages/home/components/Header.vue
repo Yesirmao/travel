@@ -9,14 +9,17 @@
       输入城市/景点/游玩主题
     </div>
     <div class="header-right">
-      城市
+      {{city}}
       <span class="iconfont arrow-right">&#xe601;</span>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
 }
 </script>
 <style lang="stylus" scoped>
@@ -26,6 +29,7 @@ export default {
   line-height: .88rem
   background: $bgColor
   color: #fff
+  padding-top: .2rem
   .header-left
     width: .64rem
     float: left
