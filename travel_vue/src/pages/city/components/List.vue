@@ -1,4 +1,5 @@
 <template>
+<!-- 城市列表 -->
   <div class="list" ref="wrapper">
 		<div>
 			<div class="area">

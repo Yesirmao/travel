@@ -1,4 +1,5 @@
 <template>
+<!-- 侧边字母列表 -->
   <div>
     <ul class="list">
 			<li class="item">A</li>

@@ -1,4 +1,5 @@
 <template>
+<!-- 城市搜索框 -->
   <div class="search">
 		<input class="input-search" type="text" placeholder="输入城市名或拼音">
 	</div>
