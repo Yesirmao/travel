@@ -8,10 +8,12 @@
       <span class="iconfont">&#xe632;</span>
       输入城市/景点/游玩主题
     </div>
-    <div class="header-right">
+    <router-link to="/city">
+      <div class="header-right">
       {{city}}
       <span class="iconfont arrow-right">&#xe601;</span>
-    </div>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -49,6 +51,7 @@ export default {
     width: 1.24rem
     float: left
     text-align: center
+    color: #fff
     .arrow-right
       margin-left: -.1rem
 </style>
