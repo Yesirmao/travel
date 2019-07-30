@@ -13,44 +13,17 @@
 		<div class="area">
 			<div class="title border-topbottom">热门城市</div>
 			<div class="button-list">
-				<div class="button-wrapper">
-					<div class="button">北京</div>
-				</div>
-				<div class="button-wrapper">
-					<div class="button">北京</div>
-				</div>
-				<div class="button-wrapper">
-					<div class="button">北京</div>
-				</div>
-				<div class="button-wrapper">
-					<div class="button">北京</div>
+				<div class="button-wrapper" v-for="city of hotCities" :key="city.id">
+					<div class="button">{{city.name}}</div>
 				</div>
 			</div>
 		</div>
-		<div class="area">
-			<div class="title border-topbottom">A</div>
+		<div class="area" v-for="(city, key) of cities" :key="key">
+			<div class="title border-topbottom">{{key}}</div>
 			<div class="item-list">
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-			</div>
-			<div class="title border-topbottom">B</div>
-			<div class="item-list">
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-			</div>
-			<div class="title border-topbottom">C</div>
-			<div class="item-list">
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-			</div>
-			<div class="title border-topbottom">D</div>
-			<div class="item-list">
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
-				<div class="item border-bottom">阿拉尔</div>
+				<div class="item border-bottom" v-for="item of city" :key="item.id">
+					{{item.name}}
+				</div>
 			</div>
 		</div>
 		</div>
@@ -61,7 +34,12 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    hotCities: Array,
+    cities: Object
+  },
   mounted () {
+    // 获取整个城市列表的页面的引用，当页面数据溢出时，生成滚动条，否则不自动生成滚动条
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
 }
