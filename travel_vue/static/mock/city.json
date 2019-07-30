@@ -81,8 +81,8 @@
 				"name": "安康"
 			}, {
 				"id": 20,
-				"spell": "安庆",
-				"name": "anqing"
+				"spell": "anqingg",
+				"name": "安庆"
 			}, {
 				"id": 21,
 				"spell": "anshun",
@@ -274,7 +274,7 @@
 				"spell": "changzhi",
 				"name": "长治"
 			}, {
-				"id": 66,
+				"id": 390,
 				"spell": "chongqing",
 				"name": "重庆"
 			}],
@@ -319,7 +319,7 @@
 				"spell": "dehong",
 				"name": "德宏"
 			}, {
-				"id": 76,
+				"id": 391,
 				"spell": "deyang",
 				"name": "德阳"
 			}, {
@@ -722,7 +722,7 @@
 				"spell": "laibing",
 				"name": "来宾"
 			}, {
-				"id": 173,
+				"id": 392,
 				"spell": "laiwu",
 				"name": "莱芜"
 			}, {
@@ -961,12 +961,12 @@
 				"spell": "puyang",
 				"name": "濮阳"
 			}, {
-				"id": 230,
+				"id": 394,
 				"spell": "puling",
 				"name": "普宁"
 			}],
 			"Q": [{
-				"id": 231,
+				"id": 395,
 				"spell": "qitaihe",
 				"name": "七台河"
 			}, {
@@ -1488,23 +1488,23 @@
 				"spell": "yiyang",
 				"name": "益阳"
 			}, {
-				"id": 351,
+				"id": 384,
 				"spell": "yibing",
 				"name": "宜宾"
 			}, {
-				"id": 352,
+				"id": 385,
 				"spell": "yinchuan",
 				"name": "银川"
 			}, {
-				"id": 353,
+				"id": 386,
 				"spell": "yingtan",
 				"name": "鹰潭"
 			}, {
-				"id": 354,
+				"id": 387,
 				"spell": "yingkou",
 				"name": "营口"
 			}, {
-				"id": 355,
+				"id": 388,
 				"spell": "yongzhou",
 				"name": "永州"
 			}, {
@@ -1620,11 +1620,7 @@
 				"id": 383,
 				"spell": "zunyi",
 				"name": "遵义"
-			}],
-			"I": [],
-			"O": [],
-			"U": [],
-			"V": []
+			}]
 		}
 	}
 }
