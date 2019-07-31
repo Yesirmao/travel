@@ -6,14 +6,17 @@
 			<div class="title border-topbottom">当前城市</div>
 			<div class="button-list">
 				<div class="button-wrapper">
-					<div class="button">北京</div>
+					<div class="button">
+						<!-- {{this.$store.state.city}} -->
+						{{this.currentCity}}
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="area">
 			<div class="title border-topbottom">热门城市</div>
 			<div class="button-list">
-				<div class="button-wrapper" v-for="city of hotCities" :key="city.id">
+				<div class="button-wrapper" v-for="city of hotCities" :key="city.id" @click="handleCityChange(city.name)">
 					<div class="button">{{city.name}}</div>
 				</div>
 			</div>
@@ -22,7 +25,7 @@
 		<div class="area" v-for="(city, key) of cities" :key="key" :ref="key">
 			<div class="title border-topbottom">{{key}}</div>
 			<div class="item-list">
-				<div class="item border-bottom" v-for="item of city" :key="item.id">
+				<div class="item border-bottom" v-for="item of city" :key="item.id" @click="handleCityChange(item.name)">
 					{{item.name}}
 				</div>
 			</div>
@@ -36,12 +39,26 @@
 // cities： 父组件传递的城市列表的值
 // letter：Alphabet兄弟组件通过父组件传递过来的右侧字母列表点击获取的字母的值
 import Bscroll from 'better-scroll'
+import { mapState } from 'vuex'
 export default {
   name: 'CityList',
   props: {
     hotCities: Array,
     cities: Object,
     letter: String
+  },
+  methods: {
+    handleCityChange (city) {
+      this.$store.dispatch('cityChange', city)
+      this.$router.push('/')
+    }
+  },
+  computed: {
+  // mpaState中映射的计算属性，可以是一个数组，也可以是以一个对象,即：把vuex中的公用数据city
+  // 映射到currentCity这个计算属性之中
+    ...mapState({
+      currentCity: 'city'
+    })
   },
   mounted () {
     // 获取整个城市列表的页面的引用，当页面数据溢出时，生成滚动条，否则不自动生成滚动条

@@ -10,17 +10,21 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-      {{city}}
+      <!-- {{this.$store.state.city}} -->
+      {{this.city}}
       <span class="iconfont arrow-right">&#xe601;</span>
       </div>
     </router-link>
   </div>
 </template>
 <script>
+// vuex提供了一个简单的api，是我们可以简化this.$store.state.city的取值
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    // 将vuex中的数据映射到计算属性中，即将city这个vuex中共享的公用数据映射到city这个计算属性之中
+    ...mapState(['city'])
   }
 }
 </script>
@@ -47,7 +51,8 @@ export default {
     margin: .12rem 0 0 .2rem
     border-radius: .1rem
   .header-right
-    width: 1.24rem
+    min-width: 1.04rem
+    padding: 0 .1rem
     float: left
     text-align: center
     color: #fff

@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+// 引入vuex
+import store from './store/index'
 // 引入vue-awesome-swiper轮播图依赖包
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import router from './router'
@@ -34,6 +36,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

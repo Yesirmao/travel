@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 首页头部输入框 -->
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <!-- 首页轮播图 -->
     <home-swiper :swiperList="swiperList"></home-swiper>
     <!-- 首页图标区域 -->
@@ -22,7 +22,6 @@ export default {
   name: 'Home',
   data () {
     return {
-      city: '',
       swiperList: [],
       itemList: [],
       recommendList: [],
@@ -48,7 +47,6 @@ export default {
       // 如果后端返回的结果正确，且返回的结果补位空
       if (res.ret && res.data) {
         const data = res.data
-        this.city = data.city
         this.swiperList = data.swiperList
         this.itemList = data.itemList
         this.recommendList = data.recommendList

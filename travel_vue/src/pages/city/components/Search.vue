@@ -8,7 +8,7 @@
 		<div class="search-content" ref="search" v-show="keyword">
 			<ul>
 				<!-- 显示匹配数据区域 -->
-				<li class="search-item border-bottom" v-for="item of list" :key="item.id">
+				<li class="search-item border-bottom" v-for="item of list" :key="item.id" @click="handleCityChange(item.name)">
 					{{item.name}}
 				</li>
 				<!-- 显示未匹配到数据时 -->
@@ -48,6 +48,12 @@ export default {
       keyword: '',
       list: [],
       timer: null
+    }
+  },
+  methods: {
+    handleCityChange (city) {
+      this.$store.dispatch('cityChange', city)
+      this.$router.push('/')
     }
   },
   computed: {
