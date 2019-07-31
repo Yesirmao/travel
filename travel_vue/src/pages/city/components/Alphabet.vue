@@ -1,15 +1,18 @@
 <template>
-<!-- 侧边字母列表 -->
+  <!-- 侧边字母列表 -->
   <div>
     <ul class="list">
-		<li class="item" v-for="item of letters"
-		:key="item"
-		:ref="item"
-		@click="handleLetterClick"
-		@touchstart="handleTouchStart"
-		@touchmove="handleTouchMove"
-		@touchend="handleTouchEnd">{{item}}</li>
-	</ul>
+      <li
+        class="item"
+        v-for="item of letters"
+        :key="item"
+        :ref="item"
+        @click="handleLetterClick"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+      >{{item}}</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -20,8 +23,15 @@ export default {
   },
   data () {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0,
+      timer: null
     }
+  },
+  updated () {
+    // 获取字母A的Y方向的位置，因为A的位置是固定的，所以当数据发生改变，页面重新渲染时，才获取A的位置，因此，不管
+    // 屏幕是否触发点击事件，与A此时的位置无关。所以，我们在此处来获取A的位置坐标
+    this.startY = this.$refs['A'][0].offsetTop
   },
   computed: {
     letters () {
@@ -48,14 +58,20 @@ export default {
     // 3.用触摸的高度减去A的距离，就是手指触摸点到A之间的距离
     // 4.用两个之间的距离除以每个li的高度，就是手指点击右侧字母的位置
     // 5.通过事件向上触发，给父组件，然后通过父组件将值传递给List组件，来显示点击字母的区域
+    // 6.性能优化：当触屏事件发生时，由于事件触发的频率很高，因此我们通过一个一次性定时器来实现节流的效果
+    // 即：当在100ms内再次触发这个事件时，我们清除定时器，在重新开始一个新的定时器，避免用户重复操作，达到节流作用
     handleTouchMove (e) {
       if (this.touchStatus) {
-        const startY = this.$refs['A'][0].offsetTop
-        const touchY = e.touches[0].clientY - 79
-        const index = Math.floor((touchY - startY) / 20)
-        if (index >= 0 && index <= this.letters.length) {
-          this.$emit('change', this.letters[index])
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && index <= this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
       }
     },
     // 当手指触摸结束时，关闭触摸
@@ -66,18 +82,22 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-	@import '~^@/varibles.styl'
-	.list
-		display: flex
-		flex-direction: column
-		justify-content: center
-		position: absolute
-		top: 1.58rem
-		right: 0
-		bottom: 0
-		width: .4rem
-		.item
-			line-height: .4rem
-			text-align: center
-			color: $bgColor
+@import '~^@/varibles.styl';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 1.58rem;
+  right: 0;
+  bottom: 0;
+  width: 0.4rem;
+
+  .item {
+    line-height: 0.4rem;
+    text-align: center;
+    color: $bgColor;
+  }
+}
 </style>
