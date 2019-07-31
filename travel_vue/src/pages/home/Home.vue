@@ -45,7 +45,6 @@ export default {
     // 获取首页请求数据
     getHomeInfoSuccess (res) {
       res = res.data
-      console.log(res)
       // 如果后端返回的结果正确，且返回的结果补位空
       if (res.ret && res.data) {
         const data = res.data

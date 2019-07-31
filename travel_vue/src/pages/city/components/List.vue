@@ -18,7 +18,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="area" v-for="(city, key) of cities" :key="key">
+		<!-- 城市列表 -->
+		<div class="area" v-for="(city, key) of cities" :key="key" :ref="key">
 			<div class="title border-topbottom">{{key}}</div>
 			<div class="item-list">
 				<div class="item border-bottom" v-for="item of city" :key="item.id">
@@ -31,16 +32,31 @@
 </template>
 <script>
 // 引入better-scroll滚动条，其封装的是iscroll
+// hotCities: 父组件传递的热门城市列表的值
+// cities： 父组件传递的城市列表的值
+// letter：Alphabet兄弟组件通过父组件传递过来的右侧字母列表点击获取的字母的值
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   mounted () {
     // 获取整个城市列表的页面的引用，当页面数据溢出时，生成滚动条，否则不自动生成滚动条
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    // 当点击右侧的字母时，获取列表上对应的字母的区域，this.$refs[this.letter]获取整个区域的数组对象，
+    // 数组第一个元素才是该元素对应的城市列表的html对应区域
+    // this.scroll.scrollToElement:当获取到对应区域后，滚动条滚动到该区域
+    letter () {
+      if (this.letter) {
+        const ele = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(ele)
+      }
+    }
   }
 }
 </script>

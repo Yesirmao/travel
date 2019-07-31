@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search :cities="cities"></city-search>
-    <city-list :hotCities="hotCities" :cities="cities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :hotCities="hotCities" :cities="cities" :letter="letter"></city-list>
+    <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
   </div>
 </template>
 <script>
@@ -16,7 +16,8 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: {}
+      cities: {},
+      letter: ''
     }
   },
   components: {
@@ -26,9 +27,15 @@ export default {
     CityAlphabet
   },
   methods: {
+    // 获取Alphabet组件传递给父组件的右侧字母列表的值
+    handleLetterChange (letter) {
+      this.letter = letter
+    },
+    // 发送请求，获取城市数据
     getCityInfo () {
       this.axios.get('/api/city.json').then(this.getCityInfoSuccess)
     },
+    // 成功获取请求数据
     getCityInfoSuccess (res) {
       var result = res.data
       if (result.ret && result.data) {
