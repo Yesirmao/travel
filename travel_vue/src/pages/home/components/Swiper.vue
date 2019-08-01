@@ -21,7 +21,9 @@ export default {
   data () {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
+        pagination: {
+          el: '.swiper-pagination'
+        },
         loop: true
       }
     }
@@ -36,7 +38,7 @@ export default {
 <style lang="stylus" scoped>
   /*由于样式通过scoped修饰的，因此直接修改分页小圆点的样式则不会生效，因此通过>>>样式穿透来修改wrapper下的分页的样式*/
   .wrapper >>> .swiper-pagination-bullet-active
-    background: green
+    background: #fff
     /*通过设置宽高百分比来解决网速慢情况下页面的抖动问题*/
   .wrapper
     overflow: hidden
