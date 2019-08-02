@@ -2,19 +2,21 @@
 <!-- 城市列表 -->
   <div class="list" ref="wrapper">
 		<div>
+			<!-- 当前城市 -->
 			<div class="area">
-			<div class="title border-topbottom">当前城市</div>
-			<div class="button-list">
-				<div class="button-wrapper">
-					<div class="button">
-						<!-- {{this.$store.state.city}} -->
-						{{this.currentCity}}
+				<div class="title border-topbottom">{{currCity}}</div>
+				<div class="button-list">
+					<div class="button-wrapper">
+						<div class="button">
+							<!-- {{this.$store.state.city}} -->
+							{{this.currentCity}}
+						</div>
 					</div>
 				</div>
-			</div>
 		</div>
+		<!-- 热门城市 -->
 		<div class="area">
-			<div class="title border-topbottom">热门城市</div>
+			<div class="title border-topbottom">{{hotCiyt}}</div>
 			<div class="button-list">
 				<div class="button-wrapper" v-for="city of hotCities" :key="city.id" @click="handleCityChange(city.name)">
 					<div class="button">{{city.name}}</div>
@@ -46,6 +48,12 @@ export default {
     hotCities: Array,
     cities: Object,
     letter: String
+  },
+  data () {
+    return {
+      currCity: '当前城市',
+      hotCiyt: '热门城市'
+    }
   },
   methods: {
     handleCityChange (city) {

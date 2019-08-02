@@ -1,8 +1,11 @@
 <template>
   <div>
     <city-header></city-header>
+    <!-- 城市搜索 -->
     <city-search :cities="cities"></city-search>
+    <!-- 热门城市和城市列表 -->
     <city-list :hotCities="hotCities" :cities="cities" :letter="letter"></city-list>
+    <!-- 右侧城市字母列表 -->
     <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
   </div>
 </template>

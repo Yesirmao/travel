@@ -1,7 +1,7 @@
 <template>
 <!-- 城市头列表 -->
   <div class="header">
-    城市选择
+    {{citySelect}}
     <router-link to="/">
       <div class="iconfont header-back">&#xe65b;</div>
     </router-link>
@@ -9,7 +9,12 @@
 </template>
 <script>
 export default {
-  name: 'CityHeader'
+  name: 'CityHeader',
+  data () {
+    return {
+      citySelect: '城市选择'
+    }
+  }
 }
 </script>
 <style lang="stylus" scoped>

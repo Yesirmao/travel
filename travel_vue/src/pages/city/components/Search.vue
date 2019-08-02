@@ -2,7 +2,7 @@
 	<div>
 		<!-- 城市搜索框 -->
 		<div class="search">
-			<input class="input-search" v-model="keyword" type="text" placeholder="输入城市名或拼音">
+			<input class="input-search" v-model="keyword" type="text" :placeholder="placeholder">
 		</div>
 		<!-- 搜索框输入内容，下方显示搜索内容区域 -->
 		<div class="search-content" ref="search" v-show="keyword">
@@ -44,6 +44,7 @@ export default {
   },
   data () {
     return {
+      placeholder: '输入城市名或拼音',
       desc: '没有找到匹配数据',
       keyword: '',
       list: [],
