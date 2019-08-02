@@ -1,5 +1,5 @@
 <template>
-  <div>
+    <div>
 		<div class="title">{{hotRecommend}}</div>
 		<ul>
 			<router-link
