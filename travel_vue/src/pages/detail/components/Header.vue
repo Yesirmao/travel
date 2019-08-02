@@ -38,7 +38,16 @@ export default {
     }
   },
   activated () {
+    // 通过添加事件监听，来获取滚动条的位置。但是由于事件监听是绑定在window中的，并且是通过activated事件来触发的
+    // 也就是说，只要当页面展示出现变化的时候，就会触发该事件。又该事件是绑定在window中，是一个全局的事件，因此，当
+    // 在别的页面中只要页面发生改变，触发了activated，则同时也会触发此时的监听事件。此时就造成了事件的不必要执行，
+    // 在首页中执行操作时，对当前该页面进行影响。
+    // 所以此时我们需要对在全局中绑定的scroll事件进行解绑。当只有触发该页面时，才触发改事件。
     window.addEventListener('scroll', this.handleScroll)
+  },
+  // 当页面即将被隐藏或者页面即将被替换成新的页面的时候，则会触发该事件.因此通过此事件，对全局的绑定事件进行解绑
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
