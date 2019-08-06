@@ -6,6 +6,8 @@ import App from './App'
 import store from './store/index'
 // 引入vue-awesome-swiper轮播图依赖包
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// 解决移动端手机上展示显示白屏的问题，可能是由于手机不支持promise的问题所导致，通过引入babel-polyfill模块解决
+import 'babel-polyfill'
 import router from './router'
 // 移入移动端解决300ms触屏延时问题的依赖包文件
 import fastClick from 'fastclick'
