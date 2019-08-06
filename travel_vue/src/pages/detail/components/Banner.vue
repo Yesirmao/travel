@@ -2,18 +2,18 @@
 	<div>
 		<!-- 图片区域 -->
 			<div class="banner" @click="handleBannerClick">
-			<img src="http://img1.qunarzz.com/sight/p0/1907/8d/8da769b8a045ec98a3.img.jpg_600x330_43ca5751.jpg"
+			<img :src="bannerImg"
 			class="banner-img" alt="深圳欢乐谷">
 			<div class="banner-info">
-				<div class="banner-title">深圳欢乐谷(AAAAA景区)</div>
+				<div class="banner-title">{{sightName}}</div>
 				<div class="banner-number">
 					<span class="iconfont banner-icon">&#xe632;</span>
-					<span>39</span>
+					<span>{{gallaryImgs.length}}</span>
 				</div>
 			</div>
 		</div>
 		<!-- 点击图片详情后显示的图片轮播区域 -->
-		<common-gallary :imgs="imgs" v-show="showGallary" @close="handleCloseGallary"></common-gallary>
+		<common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleCloseGallary"></common-gallary>
 	</div>
 </template>
 <script>
@@ -24,11 +24,14 @@
 import CommonGallary from '^common/gallary/Gallary'
 export default {
   name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   data () {
     return {
-      showGallary: false,
-      imgs: ['http://img1.qunarzz.com/sight/p0/1907/b5/b50389ea88e2df42a3.water.jpg_r_800x800_05f5f385.jpg',
-        'http://img1.qunarzz.com/sight/p0/1907/25/257c315f17d621e2a3.water.jpg_r_800x800_106e5992.jpg']
+      showGallary: false
     }
   },
   components: {
@@ -39,7 +42,7 @@ export default {
     handleBannerClick () {
       this.showGallary = true
     },
-    // 通过接收子组件传递上来的时间，控制轮播图的隐藏
+    // 通过接收子组件传递上来的事件，控制轮播图的隐藏
     handleCloseGallary () {
       this.showGallary = false
     }
